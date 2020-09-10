@@ -19,8 +19,10 @@ class Solution:
 
             # if start overlaps with the last interval of out
             if start > out[-1][1]:
+                # add new distinct interval
                 out.append((start, end))
             else:
+                # replace last interval with a merged interval
                 out[-1] = (out[-1][0], max(out[-1][-1], end))
 
         return out         
