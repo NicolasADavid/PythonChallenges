@@ -1,4 +1,3 @@
-from itertools import chain
 from collections import deque
 
 class Solution:
@@ -10,13 +9,13 @@ class Solution:
         for _ in range(numRows):
             stacks.append([])
 
-        range1 = range(numRows) # going down
-        range2 = reversed(range(numRows)[1:-1]) # going up, excluding last and first
-        range3 = chain(range1, range2) # combine ranges
+        r1 = range(numRows) # going down
+        r2 = reversed(range(numRows)[1:-1]) # going up, excluding last and first
+        rangeConcat = list(r1) + list(r2)
 
         offsets = deque() # for rotating the stack to use
 
-        for x in range3:
+        for x in rangeConcat:
             offsets.append(x)
 
         while s:
