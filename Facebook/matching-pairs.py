@@ -219,6 +219,7 @@ from collections import defaultdict
 
 #     return res + contains
 
+# Brute force
 def matching_pairs(s, t):
 
     n = len(s)
@@ -258,7 +259,16 @@ def matching_pairs(s, t):
     return matches + best
             
             
-
+# Next try:
+# Go through each pair of letters
+# Count matches. Count times a particular letter is matched.
+# Collect pairs that are different and their indexes
+# Collect letters that are unmatched in s and their indexes in a dict
+# Collect letters that are unmatched in t and their indexes in a dict
+# If no unmatched, see if there are two similar matches. (+0 swap, else -2 swap)
+# If one unmatched, see if there are two similar matches. (+0 swap, else -1 swap)
+# See if any pair unmatched exists inverted unmatched (x, y) & (y, x) (+2 swap)
+# See if any unmatched letter in s exists unmatched in t (+1 swap)
 
     
 # These are the tests we use to determine if the solution is correct.
