@@ -16,6 +16,7 @@ from collections import Counter
 # If solves, decr s[left] from countS and incr left
 # If does not solve, incr right
 # Continue until right reaches end
+# Sliding Window
 
 def min_length_substring(s, t):
 
@@ -35,7 +36,8 @@ def min_length_substring(s, t):
     while right < len(s):
         c = Counter(ct) - Counter(cs)
         if sum(c.values()) == 0:
-            best = min(best, right - left + 1) if best else right - left + 1
+            ansLen = right-left+1
+            best = min(best, ansLen) if best else ansLen
             removed = s[left]
             cs[removed] = cs[removed] - 1
             left += 1
