@@ -24,13 +24,13 @@ class Solution:
 
                 ans = None
 
-                if token is '+':
+fix                if token == '+':
                     ans = second + first
-                if token is '-':
+                if token == '-':
                     ans = second - first
-                if token is '*':
+                if token == '*':
                     ans = second * first
-                if token is '/':
+                if token == '/':
                     ans = second / first
                     ans = math.floor(ans) if ans > 0 else math.ceil(ans)
 
