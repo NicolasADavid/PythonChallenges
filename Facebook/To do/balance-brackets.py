@@ -32,9 +32,40 @@ import math
 
 # Add any helper functions you may need here
 
+# from collections import defaultdict
 
 def isBalanced(s):
   # Write your code here
+
+  # (, ), {, }, [, or ].
+
+  stack = []
+  
+  for c in s:
+    if c == '}':
+      if not stack:
+        return False
+      
+      if stack.pop() != '{':
+        return False
+
+    elif c == ')':
+      if not stack:
+        return False
+      
+      if stack.pop() != '(':
+        return False
+
+    elif c == ']':
+      if not stack:
+        return False
+      
+      if stack.pop() != '[':
+        return False
+    else:
+      stack.append(c)
+
+  return not stack
   
 
 
