@@ -24,23 +24,51 @@
 # In the fourth iteration, all 3 elements are popped off the queue. Since they all have an equal value, we remove the one that was popped first, which had the initial value of 1 at index 1 in the original array. The remaining elements are pushed backed onto the queue, whose contents are then [0, 0].
 # In the final iteration, both elements are popped off the queue. We remove the one that was popped first, which had the initial value of 2 at index 2 in the original array.
 
-
-import math
-
-
-
+from collections import deque
 
 def findPositions(arr, x):
 
+  # in comes an array. Make a queue of it
+  # q = deque(arr)
 
-	
+  q = deque()
 
+  for idx, el in enumerate(arr):
+    q.append((el, idx+1))
 
+  output = []
 
+  # x times
+  for i in range(0, x):
 
+    stack = []
+    best = -1
+    bestIdx = -1
 
+    # up to x times again pop from queue and collect in stack
+    for j in range(0, min(x, len(q))):
 
+      # append element popped from q
+      el, idx = q.popleft()
 
+      if el > best:
+        best = el
+        bestIdx = j
+      
+      stack.append((el, idx))
+
+    # process stack
+    for j in range(0, len(stack)):
+      if j == bestIdx:
+        output.append(stack[j][1]) # Collect original idx of this element in output
+        continue
+
+      element = stack[j][0] - 1 if stack[j][0] > 0 else 0
+      idx = stack[j][1]
+
+      q.append((element, idx))
+  
+  return output
 
 
 # These are the tests we use to determine if the solution is correct.
