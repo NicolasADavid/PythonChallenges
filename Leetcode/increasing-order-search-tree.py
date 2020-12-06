@@ -40,49 +40,49 @@ class Solution:
 
         return minNode if minNode else root
 
-if __name__ == "__main__":
-    r = TreeNode(
-        5,
-        TreeNode(
-            3,
-            TreeNode(
-                2,
-                TreeNode(
-                    1,
-                    None,
-                    None
-                ),
-                None
-            ),
-            TreeNode(
-                4,
-                None,
-                None
-            )
-        ),
-        TreeNode(
-            6,
-            None,
-            TreeNode(
-                8,
-                TreeNode(
-                    7,
-                    None,
-                    None
-                ),
-                TreeNode(
-                    9,
-                    None,
-                    None
-                )
-            )
-        )
-    )
+# if __name__ == "__main__":
+#     r = TreeNode(
+#         5,
+#         TreeNode(
+#             3,
+#             TreeNode(
+#                 2,
+#                 TreeNode(
+#                     1,
+#                     None,
+#                     None
+#                 ),
+#                 None
+#             ),
+#             TreeNode(
+#                 4,
+#                 None,
+#                 None
+#             )
+#         ),
+#         TreeNode(
+#             6,
+#             None,
+#             TreeNode(
+#                 8,
+#                 TreeNode(
+#                     7,
+#                     None,
+#                     None
+#                 ),
+#                 TreeNode(
+#                     9,
+#                     None,
+#                     None
+#                 )
+#             )
+#         )
+#     )
 
-    s = Solution()
+#     s = Solution()
 
-    n = s.increasingBST(r)
+#     n = s.increasingBST(r)
 
-    while(n):
-        print(n.val)
-        n = n.right
+#     while(n):
+#         print(n.val)
+#         n = n.right
