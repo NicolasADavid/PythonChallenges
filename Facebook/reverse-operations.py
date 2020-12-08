@@ -34,8 +34,50 @@ class Node:
 
 
 def reverse(head):
-  # Write your code here
+  if not head: return None
   
+  subListPrev = None
+  subListNext = None
+  subListHead = None
+  subListTail = None
+  
+  curr = head
+  
+  while curr:
+      
+      # As odd-valued nodes are found, move subListPrev
+      if curr.data % 2 == 1:
+          subListPrev = curr
+          curr = curr.next
+          
+      # found start of sublist of even-valued nodes
+      else:
+          
+          prev = None
+          subListHead = curr
+          subListTail = curr
+          
+          while curr and curr.data % 2 == 0:
+              next = curr.next
+              curr.next = prev
+              prev = curr
+              subListTail = curr
+              curr = next
+      
+          # Curr is now an odd-valued node or None
+          subListNext = curr
+          
+          # point subListPrev if defined to head of the list
+          # point subListTail (original) to subListNext
+          subListHead.next = subListNext
+          
+          if subListPrev:    
+              subListPrev.next = subListTail
+          else:
+              head = subListTail
+  
+  return head
+
 
 
 
