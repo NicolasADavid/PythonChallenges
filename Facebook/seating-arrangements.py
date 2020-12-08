@@ -24,18 +24,61 @@ import math
 
 
 def minOverallAwkwardness(arr):
-  # Write your code here
+  # sort the input
+  arr = sorted(arr)
   
-
-
-
-
-
-
-
-
-
-
+  # Init output array
+  output = [None] * len(arr)
+  
+  # Place largest at leftmost
+  # Place next largest to right of leftmost
+  # Place next largest at rightmost
+  # Alternate between placing to the right of the elements on the left
+  #     and the left of the elements on the right
+  
+  l = 1
+  r = len(arr) - 1
+  placeLeft = True
+  
+  output[0] = arr.pop()
+  
+  while arr:
+    
+    if placeLeft:
+      output[l] = arr.pop()
+      l += 1
+    else:
+      output[r] = arr.pop()
+      r -= 1
+        
+    placeLeft = not placeLeft
+          
+  endDiff = abs(output[0]-output[-1])
+  
+  worst = endDiff
+  
+  for i in range(1, len(output)):
+    worst = max(worst, abs(output[i]-output[i-1]))
+  
+  return worst
+            
+# from collections import deque
+# def minOverallAwkwardness(arr):
+#     # n log n 
+#     sorted_arr = sorted(arr)
+#     # n
+#     arr2 = deque()
+#     left = True
+#     while sorted_arr:
+#         if left:
+#             arr2.appendleft(sorted_arr.pop())
+#         else:
+#             arr2.append(sorted_arr.pop())
+#         left = not left
+#     awk = 0
+#     for i in range(1, len(arr2)):
+#         awk = max(awk, abs(arr2[i]-arr2[i-1]))
+#     return awk
 
 # These are the tests we use to determine if the solution is correct.
 # You can add your own at the bottom, but they are otherwise not editable!
