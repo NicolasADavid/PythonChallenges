@@ -11,7 +11,8 @@ class Solution():
 
     def maxFlightsInAir(self, flights: List["Flight"]) -> int:
 
-        # TODO: Sort list in place? Don't use heap?
+        # flightsSortedByDeparture = sorted(flights, key=lambda x: x.departure)
+        # flightsSortedByDepartureReversed = sorted(flights, key=lambda x: x.departure, reverse=True)
 
         # Min heap with tuples (departure, tiebreaker, flight)
         toDepartFlights = []
