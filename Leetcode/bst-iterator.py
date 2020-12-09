@@ -9,6 +9,9 @@ class BSTIterator:
 
     def inorderTraversalList(self, root: TreeNode) -> TreeNode:
 
+        # self.ops += 1
+        # print("ops: " + str(self.ops))
+
         if not root: return None
 
         # Prepare to process self
@@ -23,11 +26,11 @@ class BSTIterator:
         while prevNode and prevNode.right:
             prevNode = prevNode.right
 
-        # Process right
-        nextNode = self.inorderTraversalList(root.right)
-
         # Process left
         minNode = self.inorderTraversalList(root.left)
+
+        # Process right
+        nextNode = self.inorderTraversalList(root.right)
 
         # Process self
         if prevNode:
@@ -39,6 +42,8 @@ class BSTIterator:
         return minNode if minNode else root
 
     def __init__(self, root1: TreeNode):
+
+        # self.ops = 0
 
         ll = self.inorderTraversalList(root1)
 
