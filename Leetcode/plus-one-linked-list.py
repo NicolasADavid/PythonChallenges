@@ -29,7 +29,7 @@ class Solution:
             if carryNode:
                 carry(carryNode)
             else:
-            # If carryNode found, create new head
+            # If carryNode not found, create new head
             # Carry from the head
                 tmp = ListNode(0, head)
                 head = tmp
