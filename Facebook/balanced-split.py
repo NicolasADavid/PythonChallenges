@@ -17,24 +17,22 @@
 # We can't split the array into A = [6, 6, 7] and B = [7, 12] since this doesn't satisfy the requirement that all integers in A are smaller than all integers in B.
 
 import math
-# Add any extra import statements you may need here
-
-
-# Add any helper functions you may need here
-
 
 def balancedSplitExists(arr):
-  # Write your code here
+  # Sort input
+  sortedArr = sorted(arr)
+
+  # Get sum
+  total = sum(arr)
+
+  secondSum = total
+  lastNum = None
+
+  while sortedArr and secondSum > (total / 2):
+    lastNum = sortedArr.pop()
+    secondSum -= lastNum
   
-
-
-
-
-
-
-
-
-
+  return secondSum == (total / 2) and lastNum != sortedArr[-1]
 
 # These are the tests we use to determine if the solution is correct.
 # You can add your own at the bottom, but they are otherwise not editable!
@@ -73,4 +71,3 @@ if __name__ == "__main__":
   check(expected_2, output_2)
 
   # Add your own test cases here
-  
