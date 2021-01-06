@@ -71,3 +71,18 @@ if __name__ == "__main__":
   check(expected_2, output_2)
 
   # Add your own test cases here
+  
+  arr_2 = [2,2,2,2,2,2,2,2,4,4,4,4]
+  expected_2 = True
+  output_2 = balancedSplitExists(arr_2)
+  check(expected_2, output_2)
+
+  arr_2 = [2,2,4,4,4]
+  expected_2 = False
+  output_2 = balancedSplitExists(arr_2)
+  check(expected_2, output_2)
+
+  arr_2 = [2,2,2,2,4]
+  expected_2 = False
+  output_2 = balancedSplitExists(arr_2)
+  check(expected_2, output_2)
