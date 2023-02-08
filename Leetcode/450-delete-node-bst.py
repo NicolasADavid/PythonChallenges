@@ -22,7 +22,8 @@ class Solution:
 
     def replaceNode(self, root):
 
-        # Have a right. Go right and then descend left.
+        # Find node to put key node's left subtree under:
+        # The smallest valued node in its right subtree.
         if root.right:
             smallestOnRight = root.right
 
@@ -33,7 +34,7 @@ class Solution:
 
             return root.right
                 
-        # Have no right have left.
+        # Have no right, but have left, use left.
         elif root.left:
             return root.left        
         
