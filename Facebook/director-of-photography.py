@@ -2,12 +2,6 @@
 
 def getArtisticPhotographCount(N: int, C: str, X: int, Y: int) -> int:
 
-    # print("N: ", N)
-    # print("C: ", C)
-    # print("X: ", X)
-    # print("Y: ", Y)
-    # Write your code here
-
     def countPhotos(C: str, X: int, Y: int) -> int:
 
         solutions = 0
@@ -22,55 +16,41 @@ def getArtisticPhotographCount(N: int, C: str, X: int, Y: int) -> int:
 
         for i in range(len(C)):
 
-            # print("INDEX: ", i)
-
             # 1 move B window
 
-            while bl < len(C) - 1 and bl < i + Y:
+            while bl < i + Y:
                 bl = bl + 1
-                if C[bl] == "B":
-                    # print("Add B")
+                if bl < len(C) and C[bl] == "B":
                     bc = bc + 1
 
-            while bf < len(C) - 1 and bf < i + X:
-                if C[bf] == "B":
+            while bf < i + X:
+                if bf < len(C) and C[bf] == "B":
                     bc = bc - 1
-                    # print("Sub B")
                 bf = bf + 1
-
-            # print("B WINDOW START: ", bf)
-            # print("B WINDOW END: ", bl)
 
             # 2 move P window
 
-            while pl < len(C) - 1 and pl < i - X:
+            while pl < i - X:
                 pl = pl + 1
-                if C[pl] == "P":
-                    # print("Add P")
+                if pl < len(C) and C[pl] == "P":
                     pc = pc + 1
 
-            while pf < len(C) - 1 and pf < i - Y:
-                if C[pf] == "P":
-                    # print("Sub P")
+            while pf < i - Y:
+                if pf < len(C) and C[pf] == "P":
                     pc = pc - 1
                 pf = pf + 1
-            # print("P WINDOW START: ", pf)
-            # print("P WINDOW END: ", pl)
 
             # 3 if Actor, count solutions
+
             if C[i] == "A":
-                # print("actor found, count sols: ", pc * bc)
                 solutions = solutions + (pc * bc)
 
         return solutions
 
-    # print("forward")
-    sol = countPhotos(C, X, Y)
-    # print("reversed")
-    sol += countPhotos(C[::-1], X, Y)
+    fwd = countPhotos(C, X, Y)
+    bwd = countPhotos(C[::-1], X, Y)
 
-    # print("SOLUTIONS: ", sol)
-    return sol
+    return fwd + bwd
 
 
 test_case_number = 1
