@@ -40,9 +40,7 @@ def check(expected, output):
     else:
         print(wrongTick, 'Test #', test_case_number,
               ': Expected ', sep='', end='')
-        # printString(expected)
-        print(' Your output: ', end='')
-        printString(output)
+        print(' Your output: ', output, end='')
         print()
     test_case_number += 1
 
