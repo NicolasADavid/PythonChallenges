@@ -57,14 +57,18 @@ def longestSubstringWithSubstitutions(s: str, k: int):
             l += 1
 
             # find largest count value in counts dictionary. Corresponding key is next target letter, minimizing need for substitutions.
-            sorted_keys_by_count = sorted(
-                counts.items(), key=lambda x: x[1], reverse=True)
-            letter = sorted_keys_by_count[0][0]
+            letter = max(counts, key=counts.get)
+            lettercount = counts[letter]
+            # sorted_keys_by_count = sorted(
+            #     counts.items(), key=lambda x: x[1], reverse=True)
+            # letter = sorted_keys_by_count[0][0]
 
             # How many substitutions must be made? Sum counts of other letters. That is new substitutions count.
-            otherLetterCountsSum = 0
-            for kv in sorted_keys_by_count[1:]:
-                otherLetterCountsSum += kv[1]
+            # otherLetterCountsSum = 0
+            # for kv in sorted_keys_by_count[1:]:
+            #     otherLetterCountsSum += kv[1]
+            otherLetterCountsSum = sum(counts.values()) - lettercount
+
             substitutions = otherLetterCountsSum
 
     return best
