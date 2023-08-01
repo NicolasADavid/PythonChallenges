@@ -1,3 +1,4 @@
+from typing import List
 class Solution:
     def countElements(self, nums: List[int]) -> int:
         low, high, c = None, None, 0
