@@ -1,4 +1,5 @@
 from typing import List
+import collections
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
@@ -24,6 +25,13 @@ class Solution:
 
         return anagrams.values()
 
+# Way simpler editorial solution:
+# class Solution(object):
+#     def groupAnagrams(self, strs):
+#         ans = collections.defaultdict(list)
+#         for s in strs:
+#             ans[tuple(sorted(s))].append(s)
+#         return ans.values()
 
 if __name__ == "__main__":
     s = Solution()
