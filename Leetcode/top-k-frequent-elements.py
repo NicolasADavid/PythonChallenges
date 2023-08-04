@@ -11,18 +11,15 @@ class Solution:
         # O(n)
         for num in nums:
             counts[num] = counts[num] + 1
-            # O(logn)
-            heapq.heappush(h, (-counts[num], num))
         
+        # O(n)
+        for key, value in counts.items():
+            # O(logn)
+            heapq.heappush(h, (-value, key))
+            
         ans = []
-        seen = set()
         while len(ans) < k and h:
-            n = heapq.heappop(h)[1]
-            if n in seen:
-                continue
-            else:
-                seen.add(n)
-                ans.append(n)
+            ans.append(heapq.heappop(h)[1])
 
         return ans
     
