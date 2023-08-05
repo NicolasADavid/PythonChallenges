@@ -1,25 +1,23 @@
 from typing import List
 
 class Solution:
+
     def maxArea(self, height: List[int]) -> int:
+        l, r, best = 0, len(height) - 1, 0 
 
-        max = 0
-        l = 0
-        r = len(height)-1
+        while l < r:
 
-        while (l < r):
+            new = min(height[l], height[r]) * (r - l)
 
-            new = min(height[l], height[r])*(r-l)
+            best = max(best, new)
 
-            if(new > max):
-                max = new
-            if(height[l]<height[r]):
-                l+=1
+            if height[l] > height[r]:
+                r -= 1
             else:
-                r-=1
+                l += 1
+        
+        return best
 
-        return max 
-                
 if __name__ == "__main__":
     s = Solution()
 
