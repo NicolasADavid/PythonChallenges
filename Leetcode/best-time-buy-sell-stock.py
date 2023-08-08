@@ -1,28 +1,22 @@
 from typing import List
 
 class Solution:
+
     def maxProfit(self, prices: List[int]) -> int:
-        buyAt = 0
-        sellAt = 0
-        nextBuyAt = 0
-        nextSellAt = 0
 
-        def profit(buy, sell) -> int:
+        buyAt, sellAt, nextBuyAt = 0, 0, 0
 
-            if buy >= sell: return 0
-
-            return prices[sell] - prices[buy]
-
-        for i, price in enumerate(prices):
-            if price < prices[nextBuyAt]:
-                nextBuyAt = nextSellAt = i
-            if price > prices[nextSellAt]:
-                nextSellAt = i
-
-            if profit(nextBuyAt, nextSellAt) > profit(buyAt, sellAt):
+        def profit(buyAt: int, sellAt:int) -> int:
+            if buyAt >= sellAt: return 0
+            return prices[sellAt] - prices[buyAt]
+        
+        for idx, price in enumerate(prices):
+            if profit(nextBuyAt, idx) > profit(buyAt, sellAt):
                 buyAt = nextBuyAt
-                sellAt = nextSellAt
-
+                sellAt = idx
+            if price < prices[buyAt]:
+                nextBuyAt = idx
+            
         return profit(buyAt, sellAt)
 
 if __name__ == "__main__":
