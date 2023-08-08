@@ -31,7 +31,9 @@ class Solution:
         idxs = (0, 0)
 
         while right < len(s):
+
             c = Counter(ct) - Counter(cs)
+
             if sum(c.values()) == 0:
                 l = right - left + 1
 
@@ -39,14 +41,17 @@ class Solution:
                     best = l
                     idxs = (left, right)
 
+                # contract
                 removed = s[left]
                 cs[removed] = cs[removed] - 1
                 left += 1
-                continue
+                
+            else:
+                # expand
+                right += 1
+                if right < len(s):
+                    new = s[right]
+                    cs[new] = cs[new] +1
 
-            right += 1
-            if right < len(s):
-                new = s[right]
-                cs[new] = cs[new] +1
         
         return s[idxs[0]:idxs[1]+1] if best else ""
