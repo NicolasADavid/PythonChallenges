@@ -2,7 +2,8 @@ from typing import List
 class Solution:
     def findMaxAverage(self, nums: List[int], k: int) -> float:
         
-        best = window = 0
+        best = None
+        window = 0
         r = -1
         l = 0
         
@@ -14,7 +15,7 @@ class Solution:
             r += 1
             window += nums[r]
         
-        best = max(best, window/k)
+        best = window/k
 
         # slide window
         while r < len(nums) - 1:
