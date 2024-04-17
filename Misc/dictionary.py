@@ -22,3 +22,32 @@ if __name__ == "__main__":
         return 0
 
     dd = defaultdict(def_value)
+
+    di = defaultdict(int)
+
+    # Defining the dict and passing  
+    # lambda as default_factory argument 
+    d = defaultdict(lambda: "Not Present") 
+    d["a"] = 1
+    d["b"] = 2
+    
+    print(d["a"]) 
+    print(d["b"]) 
+    print(d["c"])
+
+
+    # Defining a dict 
+    d = defaultdict(list) 
+    
+    for i in range(5): 
+        d[i].append(i) 
+        
+    print("Dictionary with values as list:") 
+    print(d) 
+
+
+
+
+
+
+
