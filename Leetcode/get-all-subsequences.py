@@ -80,8 +80,11 @@ def getAllSubsequences(word: str) -> list[str]:
             if len(subseq) > 0:
                 answers.append(subseq)
             return
-
+        
+        # include character at i
         helper(word, subseq+word[i], i+1)
+        
+        # omit character at i
         helper(word, subseq, i+1)
 
     helper(word, "", 0)
