@@ -46,8 +46,9 @@ Insightful & revealing test cases:
 🧠 BRAINSTORM
 What approaches could work?
 Algorithm 1:
-Time: O(N) -> Make two choices for each char in input
-Space: O(N) -> Construct answer set. Grows linearly with N.
+Time: O(2^N) -> Make two choices for each char in input
+Space: O(N) -> Create up to N stack frames.
+Output: O(2^N) -> Large answer set
  
 
 📆 PLAN
@@ -83,7 +84,7 @@ def getAllSubsequences(word: str) -> list[str]:
         
         # include character at i
         helper(word, subseq+word[i], i+1)
-        
+
         # omit character at i
         helper(word, subseq, i+1)
 
