@@ -14,7 +14,7 @@ def solution(m):
     output = []
     
     while arrs:
-        t = heapq.heappop(arrs)
+        (val, arr, _) = heapq.heappop(arrs)
         val = t[0]
         arr = t[1]
 
@@ -33,4 +33,4 @@ def solution(m):
 
 assert solution([[]]) == []
 assert solution([[1,2]]) == [1,2]
-assert solution([[1,2], [3]]) == [1,2,3]
+assert solution([[1,2], [3], [5,6],[1,2,3,4,5]]) == [1,1,2,2,3,3,4,5,5,6]
