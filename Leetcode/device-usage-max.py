@@ -23,25 +23,21 @@ $device_id = "flohd" and $usage_in_minutes = 75 minutes.
 
 def solution(data):
 
-    best = 0
-    bestDevice = None
-
+    ans = None
+    best = float('-inf')
+    
     for d in data:
         device, usage = d.split(",")
 
-        if usage == "0000":
-            continue
-
         while usage[0] == "0":
             usage = usage[1:]
-        
         usage = int(usage)
-        
-        if usage > best:
+
+        if best < usage:
             best = usage
-            bestDevice = device
+            ans = device
     
-    return bestDevice
+    return ans
 
 
 print(solution(data = ["iqttt,0077",
