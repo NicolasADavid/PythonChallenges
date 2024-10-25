@@ -63,7 +63,7 @@ def getBestBlockStudyCost(incomes: List[int], blockSize: int) -> int:
             blockTotal += new
             blockBest = max(blockBest, new)
 
-            if mono and mono[-1] < new:
+            while mono and mono[-1] < new:
                 mono.pop()
             
             mono.append(new)
@@ -88,13 +88,9 @@ def getBestBlockStudyCost(incomes: List[int], blockSize: int) -> int:
 
     return best
 
-incomes = [20,  500,   65, 50,  70,  100]
-print(getBestBlockStudyCost(incomes, 3))
-
-print(getBestBlockStudyCost([100, 80, 50, 45, 40], 3))
-
-print(getBestBlockStudyCost([100, 80, 50, 50, 50], 3))
-
-print(getBestBlockStudyCost([100, 80, 50], 3))
-
-print(getBestBlockStudyCost([100, 80, 40, 45, 50], 3))
+# assert getBestBlockStudyCost([20,  500,   65, 50,  70,  100], 3) == 25
+# assert getBestBlockStudyCost([100, 80, 50, 45, 40], 3) == 15
+# assert getBestBlockStudyCost([100, 80, 50, 50, 50], 3) == 0
+# assert getBestBlockStudyCost([100, 80, 50], 3) == 70
+# assert getBestBlockStudyCost([100, 80, 40, 45, 50], 3) == 15
+# assert getBestBlockStudyCost([1,1,1,2,1], 4) == 3
