@@ -22,12 +22,20 @@ Insightful & revealing test cases:
 🧠 BRAINSTORM
 What approaches could work?
 Algorithm 1:
-Time: O()
-Space: O()
+Time: O(N)
+Space: O(1)
  
 
 📆 PLAN
 Outline of algorithm #: 
+# is sorted?
+# find first OOO L->R O(N)
+# find first OOO R->L O(N)
+# find max in window O(N)
+# find min in window O(N)
+# expand left until bound or arr[l-1] <= window min O(N)
+# expand right until bound or arr[r+1] >= window min O(N)
+return r - l + 1
  
 
 🛠️ IMPLEMENT
