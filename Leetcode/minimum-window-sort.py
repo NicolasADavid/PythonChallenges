@@ -49,49 +49,38 @@ Run tests. Methodically debug & analyze issues.
 '''
 
 def shortestWindowSort(arr: list[int]) -> int:
-    if not arr:
-        return 0
-    
     n = len(arr)
-    l = 0
-    r = len(arr) - 1
 
     if n == 0 or n == 1:
         return 0
 
-    # is sorted?
-    f = True
-    for i in range(1, n):
-        if arr[i-1] > arr[i]:
-            f = False
-
-    if f:
-        return 0
-
+    l = 0
+    r = len(arr) - 1
+    
     # find first OOO L->R
     while l < n - 1 and arr[l] <= arr[l+1]:
         l += 1
+
+    if l == len(arr) - 1:  # if the array is sorted
+      return 0
 
     # find first OOO R->L
     while r > 1 and arr[r] >= arr[r-1]:
         r -= 1
 
-    # find max in window
-    wmax = float("-inf")
+    # find min + max in window
+    window_max = float("-inf")
+    window_min = float("inf")
     for i in range(l, r+1):
-        wmax = max(wmax, arr[i])
-
-    # find min in window
-    wmin = float("inf")
-    for i in range(l, r+1):
-        wmin = min(wmin, arr[i])
+        window_max = max(window_max, arr[i])
+        window_min = min(window_min, arr[i])
 
     # expand left until bound or arr[l-1] <= window min
-    while l > 0 and wmin < arr[l - 1]:
+    while l > 0 and window_min < arr[l - 1]:
         l -= 1
 
     # expand right until bound or arr[r+1] >= window min
-    while r < n - 1 and wmax > arr[r + 1]:
+    while r < n - 1 and window_max > arr[r + 1]:
         r += 1
 
     return r - l + 1
