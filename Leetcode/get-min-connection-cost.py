@@ -107,17 +107,11 @@ def getMinConnectionCost(warehouseCapacity, queries):
 if __name__ == '__main__':
     hubs1 = [1, 2, 3, 4, 5, 6, 7, 8, 9] 
     queries1 = [[4, 7]]
-    print(getMinConnectionCost(hubs1, queries1))
+    print(getMinConnectionCost(hubs1, queries1)) # 10
 
-    oCost = 0
-    for i in range(len(hubs1)):
-        oCost += hubs1[-1] - hubs1[i]
-    
-    print(oCost) # 36
-    # 6
-    # 3
-    # 3
-    # 12
+    hubs2 = [3, 6, 10, 15, 20]
+    queries2 = [[2, 4]]
+    print(getMinConnectionCost(hubs2, queries2)) # 8
 
 
     
