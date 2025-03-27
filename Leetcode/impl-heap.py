@@ -90,7 +90,7 @@ class Heap:
         
         # heap (bottom to top)
         # Last val is at self.heap[-1]
-        # index of last val is len(self.heap)
+        # index of last val is len(self.heap) - 1
 
         # if child is index i, parent will be (i - 1) // 2
         currIdx = len(self.heap) - 1
@@ -167,16 +167,16 @@ assert minHeap.pop() == 5
 assert minHeap.pop() == 15
 
 # Test maxHeap
-minHeap = Heap(minHeap=False)
-minHeap.insert(3)
-minHeap.insert(2)
-minHeap.insert(1)
-assert minHeap.peek() == 3
-assert minHeap.pop() == 3
-assert minHeap.peek() == 2
-minHeap.insert(15)
-minHeap.insert(5)
-assert minHeap.pop() == 15
-assert minHeap.pop() == 5
-assert minHeap.pop() == 2
-assert minHeap.pop() == 1
+maxHeap = Heap(minHeap=False)
+maxHeap.insert(3)
+maxHeap.insert(2)
+maxHeap.insert(1)
+assert maxHeap.peek() == 3
+assert maxHeap.pop() == 3
+assert maxHeap.peek() == 2
+maxHeap.insert(15)
+maxHeap.insert(5)
+assert maxHeap.pop() == 15
+assert maxHeap.pop() == 5
+assert maxHeap.pop() == 2
+assert maxHeap.pop() == 1
