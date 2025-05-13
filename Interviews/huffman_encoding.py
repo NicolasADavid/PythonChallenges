@@ -26,18 +26,19 @@ class HuffmanEncoder:
 
         while len(heap) > 1:
             # pop two least frequent
-            left_tuple = heapq.heappop(heap)
-            right_tuple = heapq.heappop(heap)
+            (left_freq, left_node) = heapq.heappop(heap)
+            (right_freq, right_node) = heapq.heappop(heap)
             
             # Combine frequency
             # Create new node with lower freq as left child and higher freq as right child
-            new_freq = (left_tuple[0] + right_tuple[0])
-            new_node = HuffmanTreeNode(freq = new_freq, left = left_tuple[1], right = right_tuple[1])
+            new_freq = (left_freq + right_freq)
+            new_node = HuffmanTreeNode(freq = new_freq, left = left_node, right = right_node)
 
             # re-insert to queue
             heapq.heappush(heap, (new_freq, new_node))
 
-        self.tree_root = heap[0][1]
+        # The last node is the root of the tree
+        (_, self.tree_root) = heapq.heappop(heap)
         
     def build_encoding_map(self):
 
@@ -88,7 +89,7 @@ class HuffmanEncoder:
 if __name__ == "__main__":
 
     freq_map = {"A": 9, "B": 2, "C": 4, "D": 5, "E": 8, "F": 1}
-    
+
     huffman = HuffmanEncoder(freq_map)
     huffman.print_state()
 
