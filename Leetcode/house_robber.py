@@ -22,23 +22,23 @@
 
 from typing import List
 
-# class Solution:
-#     def rob(self, nums: List[int]) -> int:
+class Solution:
+    def rob(self, nums: List[int]) -> int:
 
-#         t1 = 0
-#         t2 = 0
+        t1 = 0
+        t2 = 0
 
-#         for num in nums:
-#             temp = t1
+        for num in nums:
+            temp = t1
 
-#             t1 = max(
-#                 t1,      # steal from the previous house
-#                 num+t2 # steal from this house.
-#             )
+            t1 = max(
+                t1,      # steal from the previous house
+                num+t2 # steal from this house.
+            )
 
-#             t2 = temp     # Track how much could have been stolen from the previous house
+            t2 = temp     # Track how much could have been stolen from the previous house
         
-        # return t1
+        return t1
     
 
 
@@ -55,7 +55,7 @@ from typing import List
 #             dp[i] = max(dp[i - 1], dp[i - 2] + nums[i - 1])
 #         return dp[-1]
 
-class Solution(object):
+class SolutionDP(object):
     def rob(self, nums):
         """
         :type nums: List[int]
@@ -79,7 +79,28 @@ class Solution(object):
         
 if __name__ == "__main__":
     nums = [1, 2, 3, 1]
-    print(Solution().rob(nums))  # Output: 4
+    assert Solution().rob(nums) == 4
+    assert SolutionDP().rob(nums) == 4
 
     nums = [2, 7, 9, 3, 1]
-    print(Solution().rob(nums))  # Output: 12
+    assert Solution().rob(nums) == 12
+    assert SolutionDP().rob(nums) == 12
+
+    nums = [0]
+    assert Solution().rob(nums) == 0
+    assert SolutionDP().rob(nums) == 0
+    nums = [1]
+    assert Solution().rob(nums) == 1
+    assert SolutionDP().rob(nums) == 1
+    nums = [2]
+    assert Solution().rob(nums) == 2
+    assert SolutionDP().rob(nums) == 2
+    nums = [1, 2]
+    assert Solution().rob(nums) == 2
+    assert SolutionDP().rob(nums) == 2
+    nums = [2, 1]
+    assert Solution().rob(nums) == 2
+    assert SolutionDP().rob(nums) == 2
+    nums = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    assert Solution().rob(nums) == 5
+    assert SolutionDP().rob(nums) == 5
