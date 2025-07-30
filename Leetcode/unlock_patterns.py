@@ -71,7 +71,7 @@ class Solution(object):
 
             count = 0
                 
-            def dfs(src, length, visited, pattern):
+            def dfs(src, length, visited, pattern = ""):
 
                 visited.add(src)
                 pattern += str(src) + " "
@@ -81,43 +81,39 @@ class Solution(object):
 
                 if length >= m:
                     count += 1
-                    print("Valid pattern: ", pattern)
+                    print(pattern)
                 
-                if length == n:
-                    visited.remove(src)
-                    return
-                
-                for next_key in range(1, self.NUMBER_OF_KEYS + 1):
+                if length < n:
 
-                    # next_key is not already visited
-                    if next_key in visited:
-                        continue
-                    
-                    # src -> next_key does not cover a key that is not visited
-                    if cover[(min(src, next_key), max(src, next_key))] != 0 and (cover[(min(src, next_key), max(src, next_key))] not in visited):
-                        continue
+                    for next_key in range(1, self.NUMBER_OF_KEYS + 1):
 
-                    dfs(next_key, length, visited, pattern)
+                        # next_key is not already visited
+                        if next_key in visited:
+                            continue
+                        
+                        # src -> next_key does not cover a key that is not visited
+                        covered = cover[(min(src, next_key), max(src, next_key))]
+                        if covered != 0 and covered not in visited:
+                            continue
+
+                        # continue the search
+                        dfs(next_key, length, visited, pattern)
 
                 visited.remove(src)
             
-            dfs(target, 0, visited, "")
+            dfs(target, 0, visited)
         
             return count
-
-        total = 0
 
         # 1, 3, 7, 9 (corners) are symmetric. Only need to calculate possibilities from one of them
         # 2, 4, 6, 8 (edges) are symmetric.
         # 5 (center) is unique
 
-        corner = helper(1)
-        edge = helper(2)
+        corner = helper(1) * 4
+        edge = helper(2) * 4
         center = helper(5)
 
-        total += 4 * corner + 4 * edge + center
-
-        return total
+        return corner + edge + center
 
 if __name__ == "__main__":
 
